@@ -1,0 +1,142 @@
+\documentclass[a4paper,12pt]{article}
+
+% Pakete für zusätzliche Funktionen
+\usepackage[utf8]{inputenc}   % UTF-8 Zeichencodierung
+\usepackage[T1]{fontenc}     % Korrekte Silbentrennung und Umlaute
+\usepackage[ngerman]{babel}  % Deutsche Spracheinstellungen
+\usepackage{amsmath, amssymb} % Mathematische Symbole
+\usepackage{graphicx}        % Einfügen von Bildern
+\usepackage{hyperref}        % Hyperlinks
+\usepackage{geometry}        % Seitenränder
+\geometry{a4paper, margin=2.5cm}
+\usepackage{listings}        % Code-Listings
+\usepackage{csquotes}        % Zitate
+
+% Einstellungen für Hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Webtechnologies and Applications (WTA)},
+    pdfpagemode=FullScreen,
+}
+
+% Titel und Autoreninformationen
+\title{\textbf{Webtechnologies and Applications (WTA)}}
+\author{Kürsat Darcan | MFWS422A}
+\date{Abgabedatum: \today}
+
+\begin{document}
+
+% Deckblatt
+\maketitle
+\thispagestyle{empty}
+\vspace{2cm}
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{FHDW_Logo_RGB-01.svg.png} % Ersetzen Sie "example-image" durch Ihr Logo/Bild
+    \\
+    \vspace{1cm}
+    \textbf{Studiengang: Wirtschaftsinformatik}\\
+    \textbf{Fachhochschule der Wirtschaft (FHDW)}
+\end{center}
+\newpage
+
+% Inhaltsverzeichnis
+\renewcommand{\thepage}{\roman{page}} % Seitenzahlen in römischen Ziffern für Verzeichnisse
+\tableofcontents
+\newpage
+
+% Bei Bedarf Abbildungsverzeichnis
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\newpage
+
+% Bei Bedarf Tabellenverzeichnis
+\listoftables
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+\newpage
+
+% Abkürzungsverzeichnis
+\section*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+\begin{description}
+    \item[HTML] Hypertext Markup Language
+    \item[CSS] Cascading Style Sheets
+    \item[JS] JavaScript
+\end{description}
+\newpage
+
+% Hauptteil mit arabischen Seitenzahlen
+\renewcommand{\thepage}{\arabic{page}} % Seitenzahlen in arabischen Ziffern für den Hauptteil
+\setcounter{page}{1}
+
+
+% Einleitung
+\section{Einleitung}
+Deepfake-Technologie hat sich in den letzten Jahren rasant weiterentwickelt und ist sowohl eine Bereicherung als auch eine Bedrohung. Nach den Grundlagen und Bedrohungsszenarien widmet sich dieses Kapitel den Gegenmaßnahmen, den damit verbundenen ethischen Fragestellungen und den Zukunftsperspektiven. Ziel ist es, ein umfassendes Verständnis der Möglichkeiten und Herausforderungen im Umgang mit Deepfakes zu schaffen.
+\newpage
+% Strategien gegen Deepfakes
+\section{Strategien gegen Deepfakes}
+\subsection{Technologische Lösungen}
+\subsubsection{Blockchain-Technologie}
+\subsubsection{Forensische Methoden}
+\subsection{Gesetzliche Maßnahmen}
+\subsubsection{Regulierungen in den USA}
+\subsubsection{EU-Richtlinien}
+\subsubsection{Plattformverantwortung}
+\subsection{Prävention und Bildung}
+\subsubsection{Öffentliche Aufklärung}
+\subsubsection{Tools für Nutzer}
+\newpage
+\section{moralische Herausforderungen}
+\subsection{Verantwortung der Entwickler}
+\subsubsection{Innovation vs. Missbrauch}
+\subsubsection{Regulierung von Open-Source-Projekten}
+\subsection{Gesellschaftliche Folgen}
+\subsubsection{Manipulation der öffentlichen Meinung}
+\subsubsection{Persönliche Schäden}
+\newpage
+\section{Zukunftsperspektiven}
+\subsection{Technologische Entwicklungen}
+\subsection{Gesellschaftliche Anpassungen}
+\newpage
+%Fazit
+\section{Fazit}
+
+
+
+% Literaturverzeichnis
+\newpage
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\section*{Literaturverzeichnis}
+\begin{thebibliography}{99}
+    \bibitem{Beispiel1} Beispielautor, B. (2025). \textit{Titel des Buches}. Verlag, Ort.
+    \bibitem{Beispiel2} Beispielautor, C. und Beispielautor, D. (2024). Artikelname. \textit{Zeitschrift}, 12(3), 45-67.
+    \bibitem{Beispiel3} Beispielautor, E. (2023). Online-Ressource. Verfügbar unter: \url{https://www.example.com} (zuletzt aufgerufen am 01.01.2025).
+\end{thebibliography}
+
+\newpage
+% Anhang
+\appendix
+\section{Anhang}
+Hier können zusätzliche Informationen, wie Code-Beispiele oder ausführliche Tabellen, eingefügt werden.
+
+% Ehrenwörtliche Erklärung
+\newpage
+\addcontentsline{toc}{section}{Ehrenwörtliche Erklärung}
+\section*{\texttt{Ehrenwörtliche Erklärung}}
+Hiermit erkläre ich, dass ich die vorliegende schriftliche Ausarbeitung im Modul \textbf{Webtechnologies and Applications} selbstständig
+angefertigt habe. Es wurden nur die in der Arbeit ausdrücklich benannten Quellen und
+Hilfsmittel benutzt. Wörtlich oder sinngemäß übernommenes Gedankengut habe ich als
+solches kenntlich gemacht. Diese Arbeit hat in gleicher oder ähnlicher Form noch keiner
+Prüfungsbehörde vorgelegen.
+
+\vspace{3cm}
+\noindent\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+    \hrulefill & \hrulefill \\
+    Ort, Datum & Unterschrift \\
+\end{tabular}
+
+\end{document}
