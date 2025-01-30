@@ -49,23 +49,21 @@
 \newpage
 
 % Bei Bedarf Abbildungsverzeichnis
-\listoffigures
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
-\newpage
+%\listoffigures
+%\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+%\newpage
 
 % Bei Bedarf Tabellenverzeichnis
-\listoftables
-\addcontentsline{toc}{section}{Tabellenverzeichnis}
-\newpage
+%\listoftables
+%\addcontentsline{toc}{section}{Tabellenverzeichnis}
+%\newpage
 
 % Abkürzungsverzeichnis
-\section*{Abkürzungsverzeichnis}
-\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
-\begin{description}
-    \item[HTML] Hypertext Markup Language
-    \item[CSS] Cascading Style Sheets
-    \item[JS] JavaScript
-\end{description}
+%\section*{Abkürzungsverzeichnis}
+%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+%\begin{description}
+%    \item[HTML] Hypertext Markup Language
+%\end{description}
 \newpage
 
 % Hauptteil mit arabischen Seitenzahlen
@@ -75,6 +73,7 @@
 
 % Einleitung
 \section{Einleitung}
+\subsection{Hintergrund und Relevanz des Themas}
 Mit dem Fortschritt der künstlichen Intelligenz (KI) entwickeln sich auch Deepfake-Technologien stetig weiter, 
 wodurch die öffentliche Aufmerksamkeit für diese Thematik zunimmt. 
 Diese Technologien ermöglichen die Manipulation digitaler Medieninhalte wie Videos, 
@@ -82,10 +81,12 @@ Bilder und Audiodateien, sodass diese täuschend echt wirken,
 obwohl sie nie in dieser Form erstellt wurden. 
 Deepfakes sind jedoch keine eigenständige Technologie, 
 sondern basieren auf einer Kombination verschiedener KI-Methoden. \cite{BVDW2024}\\
+\subsection{Problemstellung und Herausfoderung}
 Die vielseitigen Einsatzmöglichkeiten von Deepfakes reichen von kreativen Anwendungsbereichen, 
 wie der Erstellung von Unterhaltung, bis hin zu manipulativen oder schädlichen Absichten. 
 So können Deepfakes gezielt eingesetzt werden, um die öffentliche Meinung zu beeinflussen, 
 Personen oder Unternehmen zu schädigen oder Desinformation zu verbreiten. \cite{CounterExtremism2020}\\
+\subsection{Ziel der Ausarbeitung und Aufbau}
 Diese Ausarbeitung untersucht mögliche Gegenmaßnahmen zur Erkennung und Bekämpfung von Deepfake-Technologien. 
 Dabei wird auch die ethische Seite betrachtet, 
 insbesondere die Frage, welche Verantwortung Entwickler und Nutzer dieser Technologie tragen. 
@@ -94,18 +95,26 @@ Abschließend wird ein Ausblick auf die zukünftige Entwicklung der Technologie 
 
 % Gegenmaßnahmen gegen Deepfakes
 \section{Gegenmaßnahmen gegen Deepfakes}
-Die Verbreitung von Deepfakes stellt eine Herausforderung da,
-da diese auch für Kriminelle zwecke Missbrauch werden können und somit auch unterschiedliche Gegenmaßnahmen auf verschiedenen ebenen also auf technischer, gesellschaftlicher als auch rechtlicher Ebene abgesichert werden müssen.\cite{CounterExtremism2020}
+Die Verbreitung von Deepfakes stellt eine erhebliche Herausforderung dar, 
+da sie unterschiedliche Auswirkungen auf die Gesellschaft haben kann. 
+Neben der Gefahr von Desinformation und Betrug kann auch das Vertrauen in digitale Medien nachhaltig geschädigt werden. 
+Daher ist es essenziell, Methoden zur Erkennung von Deepfakes zu entwickeln und Maßnahmen zur Regulierung einzuführen. \cite{CounterExtremism2020}
 
-\subsection{Technologische Lösungen}
-Durch die Unterschiedlichen Varianten der Deepfake Technologien werden unterschiedliche arten von Technologien verwendet, um gegen diese vorzugehen.
-\subsubsection{KI-Erkennungsmechanismen}
-Durch das voran schreiten der KI-Modelle werden Convolutional Neural Networks kurzgenannt CNNs darauf Trainiert, um Anomalien in Gesichtbewegung oder Sprachmodulation zu erkennnen, die auf Fälschungen hinweisen könnten.
+\subsection{KI-Erkennungsmechanismen}
+Mit dem Fortschritt der KI-Technologie werden spezialisierte Modelle zur Erkennung von Deepfakes entwickelt wie zum beispiel
+Convolutional Neural Networks (CNNs).
+Die CNNs wird spezial auf 
+Anomalien in Gesichtsbewegungen, 
+Lichtreflexionen oder Sprachmodulationen traniert, damit  
+die auf Fälschungen hinweisen könnten. 
+Darüber hinaus werden auch Transformer-Modelle und hybride Ansätze genutzt, 
+um Deepfakes zuverlässiger zu enttarnen. \cite{BVDW2024}
 
-\subsection{Gesetzliche Maßnahmen}
+\subsection{Deklarierung von KI-generierten Medien}
+
+
 \subsection{Prävention und Bildung}
 \subsubsection{Öffentliche Aufklärung}
-\subsubsection{Tools für Nutzer}
 \newpage
 
 % Ethik und Deepfakes
@@ -138,18 +147,30 @@ Durch das voran schreiten der KI-Modelle werden Convolutional Neural Networks ku
     \textit{Titel des Buches}. Verlag, Ort.
     \bibitem{Beispiel2} Beispielautor, C. und Beispielautor, D. (2024). Artikelname. 
     \textit{Zeitschrift}, 12(3), 45-67.
-    \bibitem{BSI2025} Bundesamt für Sicherheit in der Informationstechnik (BSI). (2025). Deepfakes – Bedrohungspotenziale und Gegenmaßnahmen. 
-    Verfügbar unter: \url{https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Kuenstliche-Intelligenz/Deepfakes/deepfakes_node.html} (zuletzt aufgerufen am 21.01.2025) Kopie aufbewahrt als \texttt{BSI - Deepfakes - Gefahren und Gegenmaßnahmen.pdf}.
+    \bibitem{BSI2025} Bundesamt f\"ur Sicherheit in der Informationstechnik (BSI). (2025). Deepfakes – Bedrohungspotenziale und Gegenmaßnahmen. 
+    Verfügbar unter: \url{https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Kuenstliche-Intelligenz/Deepfakes/deepfakes_node.html} (zuletzt aufgerufen am 21.01.2025). Kopie aufbewahrt als \texttt{BSI - Deepfakes - Gefahren und Gegenmaßnahmen.pdf}.
     \bibitem{BVDW2024} Bundesverband Digitale Wirtschaft (BVDW). (2024). Deepfakes – Eine juristische Einordnung. 
     Verfügbar unter: \url{https://www.bvdw.org/wp-content/uploads/2024/07/2024_BVDW_Deepfakes.pdf} (zuletzt aufgerufen am 22.01.2025). Kopie aufbewahrt als \texttt{2024\_BVDW\_Deepfakes\_eine\_einordnung.pdf}.
     \bibitem{CounterExtremism2020} Counter Extremism Project. (2020). Deepfakes – Bedrohungspotenziale und Gegenmaßnahmen.
     Verfügbar unter: \url{https://www.counterextremism.com/sites/default/files/200806_Deep_Fakes_DE_WEB_DS.pdf} (zuletzt aufgerufen am 22.01.2025). Kopie aufbewahrt als \texttt{200806\_Deep\_Fakes\_DE\_WEB\_DS.pdf}.
     \bibitem{Kaur2024} Kaur, A., Noori Hoshyar, A., Saikrishna, V., Firmin, S., \& Xia, F. (2024). Deepfake video detection: challenges and opportunities. Verfügbar unter: 
-    \url{https://link.springer.com/content/pdf/10.1007/s10462-024-10810-6.pdf} (zuletzt aufgerufen am 23.01.2025).
-    Kopie aufbewahrt als \texttt{Deepfake\_video\_detection\_challenges\_and\_opportunities.pdf}.
-
-
+    \url{https://link.springer.com/content/pdf/10.1007/s10462-024-10810-6.pdf} (zuletzt aufgerufen am 23.01.2025). Kopie aufbewahrt als \texttt{Deepfake\_video\_detection\_challenges\_and\_opportunities.pdf}.
+    \bibitem{Arxiv2020} Nguyen, H. H., Yamagishi, J., \&< Echizen, I. (2020). Capsule-Forensics: Using Capsule Networks to Detect Forged Images and Videos. 
+    Verfügbar unter: \url{https://arxiv.org/pdf/2003.08685} (zuletzt aufgerufen am 23.01.2025). 
+    \bibitem{BPB2024} Bundeszentrale für politische Bildung (BPB). (2024). Regulierung von Deepfakes. 
+    Verfügbar unter: \url{https://www.bpb.de/lernen/bewegtbild-und-politische-bildung/556822/regulierung-von-deepfakes/} (zuletzt aufgerufen am 23.01.2025). 
+    \bibitem{Springer2024} Dittmann, J., \& Vielhauer, C. (2024). Technische Ansätze zur Deepfake-Erkennung. In: Künstliche Intelligenz und digitale Ethik. Springer. 
+    Verfügbar unter: \url{https://link.springer.com/chapter/10.1007/978-3-662-65964-9_10} (zuletzt aufgerufen am 23.01.2025).
+    \bibitem{Fraunhofer2024} Fraunhofer ISI. (2024). Chancen und Risiken von Deepfakes für Politik, Wirtschaft und Gesellschaft. 
+    Verfügbar unter: \url{https://www.isi.fraunhofer.de/de/presse/2024/presseinfo-17-deepfakes-chancen-risiken-Politik-Wirtschaft-Gesellschaft.html} (zuletzt aufgerufen am 23.01.2025). 
+    \bibitem{Tibor2024} Tibor.net. (2024). Instagram markiert Posts mit „KI-generiert“ – was bedeutet das? 
+    Verfügbar unter: \url{https://tibor.net/digital/kuenstliche-intelligenz/instagram-markiert-posts-mit-mit-ki-generiert-was-bedeutet-das/} (zuletzt aufgerufen am 23.01.2025).
+    \bibitem{Bundesdruckerei2024} Bundesdruckerei. (2024). Desinformation und Fake-ID. 
+    Verfügbar unter: \url{https://www.bundesdruckerei.de/de/innovation-hub/desinformation-und-fake-id} (zuletzt aufgerufen am 23.01.2025). 
+    \bibitem{BPBDeepfake2024} Bundeszentrale für politische Bildung (BPB). (2024). Technische Ansätze zur Deepfake-Erkennung und -Prävention. 
+    Verfügbar unter: \url{https://www.bpb.de/lernen/bewegtbild-und-politische-bildung/556855/technische-ansaetze-zur-deepfake-erkennung-und-praevention/} (zuletzt aufgerufen am 23.01.2025).
 \end{thebibliography}
+
 
 \newpage
 % Anhang
