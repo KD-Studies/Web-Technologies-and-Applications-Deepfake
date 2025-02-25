@@ -7,11 +7,14 @@
 \usepackage{amsmath, amssymb} % Mathematische Symbole
 \usepackage{graphicx}        % Einfügen von Bildern
 \usepackage{hyperref}        % Hyperlinks
+\usepackage{bookmark}        % Handle outline changes
 \usepackage{geometry}        % Seitenränder
 \geometry{a4paper, margin=2.5cm}
 \usepackage{listings}        % Code-Listings
 \usepackage{csquotes}        % Zitate
 \usepackage{xurl}
+\usepackage{tikz}
+\usetikzlibrary{positioning, fit, backgrounds}
 % Einstellungen für Hyperlinks
 \hypersetup{
     colorlinks=true,
@@ -48,9 +51,9 @@
 \newpage
 
 % Bei Bedarf Abbildungsverzeichnis
-%\listoffigures
-%\addcontentsline{toc}{section}{Abbildungsverzeichnis}
-%\newpage
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\newpage
 
 % Bei Bedarf Tabellenverzeichnis
 %\listoftables
@@ -62,7 +65,7 @@
 \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 \begin{description}
     \item[CCN] Convolutional Neural Network
-    \item[KI] Hypertext Markup Language
+    \item[KI] Künstliche Intelligenz 
     \item[GAN] Generative Adversarial Networks
     \item[C2PA] Coalition for Content Provenance and Authenticity
     \item[NRW] Nordrhein-Westfalen
@@ -77,124 +80,232 @@
 % Einleitung
 \section{Einleitung}
 \subsection{Hintergrund und Relevanz des Themas}
-Mit dem Fortschritt der künstlichen Intelligenz (KI) entwickeln sich auch Deepfake-Technologien stetig weiter, wodurch die öffentliche Aufmerksamkeit für dieses Thema zunimmt. Diese Technologien ermöglichen die Manipulation digitaler Medieninhalte wie Videos, Bilder und Audiodateien, sodass sie täuschend echt wirken, obwohl sie in dieser Form nie existiert haben.
+
+Mit dem Fortschritt der künstlichen Intelligenz (KI) entwickeln sich auch Deepfake-Technologien stetig weiter, wodurch die öffentliche Aufmerksamkeit für dieses Thema zunimmt. 
+Diese Technologien ermöglichen die Manipulation digitaler Medieninhalte wie Videos, Bilder und Audiodateien, sodass sie täuschend echt wirken, obwohl sie in dieser Form nie existiert haben.
 
 Deepfakes sind jedoch keine eigenständige Technologie, sondern basieren auf einer Kombination verschiedener KI-Methoden. \cite{BVDW2024}\\
 
 \subsection{Problemstellung und Herausforderung}
-Die vielseitigen Einsatzmöglichkeiten von Deepfakes reichen von kreativen Anwendungsbereichen, wie der Erstellung von Unterhaltung, bis hin zu manipulativen oder schädlichen Absichten. Sie können gezielt eingesetzt werden, um die öffentliche Meinung zu beeinflussen, Personen oder Unternehmen zu schädigen oder Desinformation zu verbreiten.\cite{CounterExtremism2020}\\
+Die vielseitigen Einsatzmöglichkeiten von Deepfakes reichen von kreativen Anwendungsbereichen, wie der Erstellung von Unterhaltung, bis hin zu manipulativen oder schädlichen Absichten. 
+Sie können gezielt eingesetzt werden, um die öffentliche Meinung zu beeinflussen, Personen oder Unternehmen zu schädigen oder Desinformation zu verbreiten. \cite{CounterExtremism2020}\\
 
 \subsection{Ziel der Ausarbeitung und Aufbau}
-Diese Ausarbeitung untersucht mögliche Gegenmaßnahmen zur Erkennung und Bekämpfung von Deepfake-Technologien. Dabei wird auch die ethische Seite betrachtet, insbesondere die Frage, welche Verantwortung Entwickler und Nutzer dieser Technologie tragen.  
+Diese Ausarbeitung untersucht mögliche Gegenmaßnahmen zur Erkennung und Bekämpfung von Deepfake-Technologien. 
+Dabei wird auch die ethische Seite betrachtet, insbesondere die Frage, welche Verantwortung Entwickler und Nutzer dieser Technologie tragen.  
 
 Abschließend wird ein Ausblick auf die zukünftige Entwicklung der Technologie und ihre möglichen Auswirkungen auf die Gesellschaft gegeben.
 \newpage
 
 % Gegenmaßnahmen gegen Deepfakes
 \section{Gegenmaßnahmen gegen Deepfakes}
-Bevor auf die Gegenmaßnahmen eingegangen wird, ist es wichtig zu verstehen, wie genau Deepfakes erstellt beziehungsweise generiert werden.  
+Bevor auf die Gegenmaßnahmen eingegangen wird, ist es wichtig zu verstehen, wie genau Deepfakes erstellt beziehungsweise generiert werden.
 
-Durch den Fortschritt der künstlichen Intelligenz und des maschinellen Lernens entstand im Jahr 2014 das Generative Adversarial Network (GAN), entwickelt von Ian Goodfellow. Ein GAN besteht aus zwei neuronalen Netzwerken, die gegeneinander trainieren: dem Generator und dem Diskriminator.  
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm, >=latex]
+        % Styles
+        \tikzstyle{block} = [rectangle, draw, minimum width=2.5cm, minimum height=1.5cm]
+        \tikzstyle{gen} = [block, fill=blue!100]
+        \tikzstyle{disc} = [block, fill=red!100]
+        
+        % Generator Block
+        \node (rannoise) [block, minimum width=2cm, minimum height=1cm] {Random noise};
+        \node (gen) [gen, right=of rannoise] {Generator};
+        \node (fake) [block, right=of gen] {Fake image};
+        
+        % Training set
+        \node (trainset) [block, above=of gen, minimum width=2cm, minimum height=2cm] {Training set};
+        
+        % Real Images
+        \node (real) [block, right=of trainset, minimum width=2cm, minimum height=2cm] {Real Images};
+        
+        % Discriminator Block
+        \node (discri) [disc, right=of fake] {Discriminator};
+        \node (realtext) [right=of discri, yshift=0.5cm, text=blue] {\textbf{Real}};
+        \node (faketext) [right=of discri, yshift=-0.5cm, text=gray] {Fake};
+        
+        % Arrows
+        \draw[->] (rannoise) -- (gen);
+        \draw[->] (gen) -- (fake);
+        \draw[->] (trainset) -- (real);
+        \draw[->] (real) -- (discri);
+        \draw[->] (fake) -- (discri);
+        \draw[->] (discri) -- (realtext);
+        \draw[->] (discri) -- (faketext);
 
-Der Generator erstellt Deepfakes, indem er neue Bilder generiert, die so realistisch wie möglich aussehen. Der Diskriminator hingegen vermischt die Trainingsdaten mit den generierten Bildern und entscheidet, ob ein Bild ein Original oder ein künstlich erzeugtes (Fake) Bild ist.  
+        % Border around everything
+        \node[draw, thick, dashed, inner sep=5pt, fit=(rannoise) (trainset) (discri) (realtext) (faketext)] {};
+    \end{tikzpicture}
+    \caption{Generative Adversarial Network (GAN), angelehnt an \cite{BVDW2024}}
+\end{figure}
 
-Durch diese Wechselwirkung verbessern sich beide Netzwerke gegenseitig: Der Generator versucht, immer realistischere Bilder zu erzeugen, während der Diskriminator immer besser darin wird, echte von gefälschten Bildern zu unterscheiden. \cite{BVDW2024}
+
+
+Durch den Fortschritt der künstlichen Intelligenz und des maschinellen Lernens entstand im Jahr 2014 das Generative Adversarial Network (GAN), entwickelt von Ian Goodfellow. 
+Ein GAN besteht aus zwei neuronalen Netzwerken, die gegeneinander trainieren. Durch die unterschiedlichen verwendung der neuronalen Netzwerke, 
+werden diese in zwei Kategorien unterteilt: Der Generator und der Diskriminator.   
+
+Der Generator erstellt Deepfakes, indem er neue Bilder generiert, die so realistisch wie möglich aussehen. Der Diskriminator hingegen vermischt die Trainingsdaten mit den generierten Bildern und entscheidet, 
+ob ein Bild ein Original oder ein künstlich erzeugtes (Fake) Bild ist.  
+
+Durch diese Wechselwirkung verbessern sich beide Netzwerke gegenseitig: Der Generator versucht, immer realistischere Bilder zu erzeugen, 
+während der Diskriminator immer besser darin wird, echte von gefälschten Bildern zu unterscheiden. \cite{BVDW2024}
 
 \subsection{KI-Erkennungsmechanismen}\label{subsec:KI-Erkennungsmechanismen}
-Nachdem die Funktionsweise von Deepfakes erklärt wurde, sollte klar sein, dass die Erkennung von Deepfakes sich kompliziert gestaltet. Auch bei den Erkennungsmechanismen werden unterschiedliche Technologien sowie algorithmische und menschliche Ansätze kombiniert.  
+Nachdem die Funktionsweise von Deepfakes erklärt wurde, sollte klar sein, dass die Erkennung von Deepfakes sich kompliziert gestaltet. 
+Auch bei den Erkennungsmechanismen werden unterschiedliche Technologien sowie algorithmische und menschliche Ansätze kombiniert.  
 
-Um Deepfakes zu erkennen, werden aktuell Methoden verwendet, die nach spezifischen Mustern in der Bild- oder Tonverarbeitung suchen. Unregelmäßigkeiten in den Bildern oder Videos werden identifiziert, die für das menschliche Auge schwer, aber für den Algorithmus leicht zu erkennen sind.  
+Um Deepfakes zu erkennen, werden aktuell Methoden verwendet, die nach spezifischen Mustern in der Bild- oder Tonverarbeitung suchen. 
+Unregelmäßigkeiten in den Bildern oder Videos werden identifiziert, die für das menschliche Auge schwer, aber für den Algorithmus leicht zu erkennen sind.  
 
-Ein weiterer Ansatz ist die Verwendung von Convolutional Neural Networks (CNNs), die auf subtile Anomalien trainiert werden, wie etwa Gesichtsbewegungen oder Sprachmodulationen. Auch die Blinzelmuster werden analysiert, da sie bei Deepfakes oftmals fehlen oder unnatürlich erscheinen. \cite{BVDW2024}
+Ein weiterer Ansatz ist die Verwendung von Convolutional Neural Networks (CNNs), die auf subtile Anomalien trainiert werden, wie etwa Gesichtsbewegungen oder Sprachmodulationen. 
+Auch die Blinzelmuster werden analysiert, da sie bei Deepfakes oftmals fehlen oder unnatürlich erscheinen. \cite{BVDW2024}
 
 \subsection{Deklarierung von KI-generierten Medien}
-Durch die Generierung von KI-erstellten Medien werden viele Inhalte auch in sozialen Netzwerken wie Instagram, YouTube und mehr verbreitet. Da Deepfakes realistisch gestaltet werden, ist es für den Konsumenten schwer zu unterscheiden, ob die kommenden Reels echt oder generiert sind.  
+Durch die Generierung von KI-erstellten Medien werden viele Inhalte auch in sozialen Netzwerken wie Instagram, YouTube und mehr verbreitet. 
+Da Deepfakes realistisch gestaltet werden, ist es für den Konsumenten schwer zu unterscheiden, ob die kommenden Reels echt oder generiert sind.  
 
-Auf der Social-Media-Plattform YouTube wird der C2PA-Standard (Coalition for Content Provenance and Authenticity) verwendet, um beim Upload eines Videos die Metadaten zu extrahieren, die folgende Informationen enthalten: Kamera-Modell, Zeitpunkt der Aufnahme, Software-Verlauf und Signaturen. Um zu prüfen, ob das hochgeladene Video mittels KI verändert wurde, wird die Authentizität der Metadaten anhand der Signaturen überprüft.  
+Auf der Social-Media-Plattform YouTube wird der C2PA-Standard (Coalition for Content Provenance and Authenticity) verwendet, 
+um beim Upload eines Videos die Metadaten zu extrahieren, die folgende Informationen enthalten: Kamera-Modell, Zeitpunkt der Aufnahme, Software-Verlauf und Signaturen. 
+Um zu prüfen, ob das hochgeladene Video mittels KI verändert wurde, wird die Authentizität der Metadaten anhand der Signaturen überprüft.  
 
 Des Weiteren wird geprüft, ob das Video C2PA unterstützt und ob die kryptografische Signatur in der Datei enthalten ist. Jedes Video wird in kleine Datenblöcke unterteilt, die jeweils einen Hash-Wert, also eine Prüfziffer, enthalten. Diese wird dann mit der Original-Prüfziffer verglichen. Falls diese nicht übereinstimmen, wird davon ausgegangen, dass das Video durch KI angepasst wurde. \cite{TheVerge2024a}  
 
-Währenddessen setzt Meta, der Publisher von Instagram, Facebook etc., auf externe Unternehmen wie Adobe oder OpenAI, die bei KI-generierten Inhalten Wasserzeichen oder in den Metadaten Informationen hinterlegen, um zu erkennen, ob ein Inhalt KI-generiert ist oder nicht. Falls beides, also das Wasserzeichen oder die nötige Information in den Metadaten, nicht vorhanden ist, verwendet Meta die Methode der KI-Erkennungsmechanismen in Form der CNNs (wie im Kapitel \ref{subsec:KI-Erkennungsmechanismen} beschrieben wurde). \cite{TheVerge2024b} \cite{Meta2024}
+Währenddessen setzt Meta, der Publisher von Instagram, Facebook etc., auf externe Unternehmen wie Adobe oder OpenAI, 
+die bei KI-generierten Inhalten Wasserzeichen oder in den Metadaten Informationen hinterlegen, um zu erkennen, 
+ob ein Inhalt KI-generiert ist oder nicht. Falls beides, also das Wasserzeichen oder die nötige Information in den Metadaten, nicht vorhanden ist, 
+verwendet Meta die Methode der KI-Erkennungsmechanismen in Form der CNNs (wie im Kapitel \ref{subsec:KI-Erkennungsmechanismen} beschrieben wurde). \cite{TheVerge2024b} \cite{Meta2024}
 
 \subsection{Prävention und Bildung}
-Prävention und Bildung spielen eine zentrale Rolle bei der Bekämpfung von Deepfakes. Durch die ernsthafte Gefahr, die von manipulierteren Medieninhalten ausgehen kann — wie in der öffentlichen Meinungsbildung, dem Vertrauen in digitale Medien oder der politischen Integrität, ist es notwendig, das Bewusstsein zu schärfen und die Erkennung von Deepfakes zu fördern.  
+Prävention und Bildung spielen eine zentrale Rolle bei der Bekämpfung von Deepfakes. 
+Durch die ernsthafte Gefahr, die von manipulierteren Medieninhalten ausgehen kann — wie in der öffentlichen Meinungsbildung, 
+dem Vertrauen in digitale Medien oder der politischen Integrität, ist es notwendig, 
+das Bewusstsein zu schärfen und die Erkennung von Deepfakes zu fördern.  
 
-Dies kann durch gezielte öffentliche Aufklärung, den Ausbau von Medienkompetenz sowie die Sensibilisierung für digitale Medien durch öffentliche Einrichtungen oder die Bundesregierung erreicht werden (vgl. Bundesregierung \cite{Bundesregierung2024}, vgl. Bundeszentrale für politische Bildung \cite{BPB2024}, vgl. Medienkompetenz NRW \cite{Medienkompetenz2024}, vgl. Bundesministerium für Bildung, Wissenschaft und Forschung \cite{Erwachsenenbildung2024}).
+Dies kann durch gezielte öffentliche Aufklärung, den Ausbau von Medienkompetenz sowie die Sensibilisierung für digitale Medien durch öffentliche Einrichtungen oder die Bundesregierung erreicht werden. 
+Dazu werden von vielen öffentlichen Einrichtungen solche Kurse angeboten. (siehe Vergleich)
+ (vgl. Bundesregierung \cite{Bundesregierung2024}, vgl. Bundeszentrale für politische Bildung \cite{BPB2024}, 
+ vgl. Medienkompetenz NRW \cite{Medienkompetenz2024}, vgl. Bundesministerium für Bildung, Wissenschaft und Forschung \cite{Erwachsenenbildung2024}).
 
 \newpage
 
 % Ethik und Deepfakes
 \section{Moralische Herausforderungen}
-Nachdem die Gegenmaßnahmen erläutert wurden, mit denen sich eine Person gegen Deepfakes schützen kann, müssen nun die moralischen Aspekte dieser Technologie genauer betrachtet werden. Zuvor ist es jedoch essenziell, den Begriff Moral klar zu definieren und ihre Grenzen zu bestimmen, um in den folgenden Kapiteln festzulegen, welches Handeln von den jeweiligen Beteiligten moralisch akzeptiert werden kann und was moralisch verachtet werden soll.
+Nachdem die Gegenmaßnahmen erläutert wurden, mit denen sich eine Person gegen Deepfakes schützen kann, 
+müssen nun die moralischen Aspekte dieser Technologie genauer betrachtet werden. 
+Zuvor ist es jedoch essenziell, den Begriff Moral klar zu definieren und ihre Grenzen zu bestimmen, 
+um in den folgenden Kapiteln festzulegen, welches Handeln von den jeweiligen Beteiligten moralisch akzeptiert werden kann und was moralisch verachtet werden soll.
 
 \subsection{Definition von Moral}
-Moral lässt sich auf unterschiedliche Weise definieren, für die Ausarbeitung wird auf die Definition von Kant eingegangen. Immanuel Kant war ein bedeutender Philosoph, der den kategorischen Imperativ formulierte: \textit{„Handle nur nach derjenigen Maxime, durch die du zugleich wollen kannst, dass sie ein allgemeines Gesetz werde.“} \cite{KantMetaphysik}.
+Moral lässt sich auf unterschiedliche Weise definieren, für die Ausarbeitung wird auf die Definition von Kant eingegangen. 
+Immanuel Kant war ein bedeutender Philosoph, der den kategorischen Imperativ formulierte: \textit{„Handle nur nach derjenigen Maxime, durch die du zugleich wollen kannst, dass sie ein allgemeines Gesetz werde.“} \cite{KantMetaphysik}.
 
-Dieses Zitat hebt hervor, wo die Grenzen der Moral gesetzt werden. Jede Person soll ihr Handeln reflektieren und dementsprechend agieren. Ein Negativbeispiel hierfür wäre ein falsches Versprechen. Eine Person, die Geld leihen möchte, aber weiß, dass sie dieses Geld nicht zurückzahlen kann, muss sich laut Kants Prinzip die Frage stellen, ob die Maxime dieser Person ein allgemeines Gesetz werden könnte. Die Folgen wären, dass, wenn jeder dieses Vertrauen missbrauchen würde, niemand jemals wieder jemandem vertrauen würde. Daher würde das falsche Versprechen moralisch falsch betrachtet werden. \cite{KantMetaphysik}
+Dieses Zitat hebt hervor, wo die Grenzen der Moral gesetzt werden. 
+Jede Person soll ihr Handeln reflektieren und dementsprechend agieren. Ein Negativbeispiel hierfür wäre ein falsches Versprechen. 
+Eine Person, die Geld leihen möchte, aber weiß, dass sie dieses Geld nicht zurückzahlen kann, muss sich laut Kants Prinzip die Frage stellen, 
+ob die Maxime dieser Person ein allgemeines Gesetz werden könnte. Die Folgen wären, dass, wenn jeder dieses Vertrauen missbrauchen würde, niemand jemals wieder jemandem vertrauen würde. 
+Daher würde das falsche Versprechen moralisch falsch betrachtet werden. \cite{KantMetaphysik}
 
 Diese Definition von Moral wird für die weitere Analyse in Betracht gezogen, da sie von Kant als universelles Prinzip formuliert wurde und für alle Menschen gleichermaßen gelten sollte.
 
 \subsection{Verantwortung über Deepfakes}
 Deepfakes bringen große ethische und rechtliche Herausforderungen mit sich. Wer ist eigentlich dafür verantwortlich, wenn sie erstellt, verbreitet oder für schädliche Zwecke genutzt werden?
 
-Nach Kants kategorischem Imperativ sollte sich jeder, der Deepfakes produziert oder teilt, die Frage stellen: \textit{„Was wäre, wenn das jeder tun würde?“ Würde es in Ordnung sein, wenn manipulierte Inhalte alltäglich wären und möglicherweise Schaden anrichten?} Wahrscheinlich nicht, denn das würde das Vertrauen in digitale Medien zerstören und ernsthafte gesellschaftliche Folgen haben. \cite{KantMetaphysik}
+Nach Kants kategorischem Imperativ sollte sich jeder, der Deepfakes produziert oder teilt, 
+die Frage stellen: \textit{„Was wäre, wenn das jeder tun würde?“ Würde es in Ordnung sein, wenn manipulierte Inhalte alltäglich wären und möglicherweise Schaden anrichten?} 
+Wahrscheinlich nicht, denn das würde das Vertrauen in digitale Medien zerstören und ernsthafte gesellschaftliche Folgen haben. \cite{KantMetaphysik}
 
 Daher gibt es verschiedene Akteure, die für den Umgang mit Deepfakes verantwortlich sind.
 
 In der folgenden Übersicht wird nur der ethische Imperativ von Kant betrachtet und nicht im Detail besprochen, da dies den Rahmen der Ausarbeitung sprengen würde.
 
 Ersteller von Deepfakes:
-Diejenigen, die Deepfakes erstellen, müssen sich bestimmter moralischer Aspekte bewusst sein, wie genau der Deepfake verwendet werden soll. Das heißt, wenn ein Deepfake verwendet wird, um Täuschung und Manipulation zu bezwecken, muss dieser sich aus der Sicht Kants die folgende Frage stellen: \textit{„Welche Auswirkung hätte es, wenn jeder Deepfakes verbreitet, mit dem Zweck der Täuschung und Manipulation?“} Durch diese Fragestellung wird deutlich, dass Vertrauen in Informationen und Medien verloren ginge, wenn dies gezielt von jedem verbreitet würde. Auch wenn ein Deepfake für Unterhaltung erstellt wird, muss beachtet werden, ob dieser "missbraucht" werden könnte, was wiederum die Fragestellung Kants aufwirft: \textit{„Welche Folgen hat ein Deepfake, wenn dieser missbraucht wird?“}\cite{IJS2025}\cite{KantMetaphysik}
+Diejenigen, die Deepfakes erstellen, müssen sich bestimmter moralischer Aspekte bewusst sein, wie genau der Deepfake verwendet werden soll. 
+Das heißt, wenn ein Deepfake verwendet wird, um Täuschung und Manipulation zu bezwecken, 
+muss dieser sich aus der Sicht Kants die folgende Frage stellen: \textit{„Welche Auswirkung hätte es, wenn jeder Deepfakes verbreitet, mit dem Zweck der Täuschung und Manipulation?“} 
+Durch diese Fragestellung wird deutlich, dass Vertrauen in Informationen und Medien verloren ginge, wenn dies gezielt von jedem verbreitet würde. Auch wenn ein Deepfake für Unterhaltung erstellt wird, muss beachtet werden, ob dieser "missbraucht" werden könnte, was wiederum die Fragestellung Kants aufwirft: \textit{„Welche Folgen hat ein Deepfake, wenn dieser missbraucht wird?“}\cite{IJS2025}\cite{KantMetaphysik}
 
 Deepfakes Plattformanbieter:
-Auch Plattformanbieter müssen darauf achten, wie genau ihre Plattformen verwendet werden sollen. Im Zusammenhang mit Kants Theorie sollten sich die Betreiber die Frage stellen: \textit{„Wie können/will man, dass die generierten Deepfakes verwendet werden?“} Im Zuge dieser Fragestellung werden auch mögliche Maßnahmen berücksichtigt, die diese moralische Frage vielseitig ansprechen, wie zum Beispiel Transparenz oder eine Kennzeichnungspflicht für Deepfakes. Auch die Implementierung von Sicherheitsmaßnahmen für erstellte Deepfakes, etwa die Frage, ob ein Deepfake als schädlich eingestuft wird oder nicht, sollte beachtet werden. Aus diesem Zusammenhang könnte die moralische Sichtweise hinsichtlich der Einschränkung von Deepfakes reflektiert werden. \cite{Brennan2024} \cite{KantMetaphysik}
+Auch Plattformanbieter müssen darauf achten, wie genau ihre Plattformen verwendet werden sollen. 
+Im Zusammenhang mit Kants Theorie sollten sich die Betreiber die Frage stellen: \textit{„Wie können/will man, dass die generierten Deepfakes verwendet werden?“} 
+Im Zuge dieser Fragestellung werden auch mögliche Maßnahmen berücksichtigt, die diese moralische Frage vielseitig ansprechen, 
+wie zum Beispiel Transparenz oder eine Kennzeichnungspflicht für Deepfakes. Auch die Implementierung von Sicherheitsmaßnahmen für erstellte Deepfakes, etwa die Frage, 
+ob ein Deepfake als schädlich eingestuft wird oder nicht, sollte beachtet werden. 
+Aus diesem Zusammenhang könnte die moralische Sichtweise hinsichtlich der Einschränkung von Deepfakes reflektiert werden. \cite{Brennan2024} \cite{KantMetaphysik}
 
 Gesetzgeber:
-Auch die Regierung beziehungsweise die Gesetzgeber spielen eine zentrale Rolle in der heutigen Gesellschaft. Die Gesetze sollten menschenwürdig sein, sodass die Bürger nicht durch Deepfakes beeinträchtigt werden. \cite{ThomsonReuters2024} \cite{KantMetaphysik}
+Auch die Regierung beziehungsweise die Gesetzgeber spielen eine zentrale Rolle in der heutigen Gesellschaft. 
+Die Gesetze sollten menschenwürdig sein, sodass die Bürger nicht durch Deepfakes beeinträchtigt werden. \cite{ThomsonReuters2024} \cite{KantMetaphysik}
 
 Konsumenten:
-Durch Kants Imperativ wird hervorgehoben, dass die Konsumenten nicht blind alles glauben sollten und auch keine weitere Beeinflussung bei anderen Bürgern verursachen dürfen. Zudem sollten die Konsumenten aktiv daran teilnehmen, sich gegen solche Deepfakes zu widersetzen und sich aktiv an der Aufklärung zu beteiligen. \cite{UNR2023} \cite{KantMetaphysik}
+Durch Kants Imperativ wird hervorgehoben, dass die Konsumenten nicht blind alles glauben sollten und auch keine weitere Beeinflussung bei anderen Bürgern verursachen dürfen. 
+Zudem sollten die Konsumenten aktiv daran teilnehmen, sich gegen solche Deepfakes zu widersetzen und sich aktiv an der Aufklärung zu beteiligen. \cite{UNR2023} \cite{KantMetaphysik}
 \newpage
 
 % Zukunftsperspektiven
 \section{Zukunftsperspektiven}
-Um eine kurze, aber prägnante Übersicht darüber zu erhalten, wie sich Deepfakes in Zukunft entwickeln könnten, wird dieses Thema in zwei Unterkapiteln betrachtet: Zum einen die Entwicklung der Technologie und zum anderen die gesellschaftliche Anpassung.
+Um eine kurze, aber prägnante Übersicht darüber zu erhalten, wie sich Deepfakes in Zukunft entwickeln könnten, 
+wird dieses Thema in zwei Unterkapiteln betrachtet: Zum einen die Entwicklung der Technologie und zum anderen die gesellschaftliche Anpassung.
 \subsection{Technologische Entwicklungen}
-Die Entwicklung von Deepfakes mit KI schreitet stetig voran, insbesondere mit den Modellen der GANs. Durch diese Technologie ist es möglich, realistische synthetische Medien zu erzeugen, die für das menschliche Auge kaum von echten Medien zu unterscheiden sind.  
+Die Entwicklung von Deepfakes mit KI schreitet stetig voran, insbesondere mit den Modellen der GANs. 
+Durch diese Technologie ist es möglich, realistische synthetische Medien zu erzeugen, die für das menschliche Auge kaum von echten Medien zu unterscheiden sind.  
 
-Durch die kontinuierliche Entwicklung von Deepfakes werden immer schneller und qualitativ hochwertigere Medien generiert. Die Massenproduktion von Fälschungen, die kostengünstig mit marktverfügbaren Apps erzeugt werden, kann nicht nur gezielt von Staaten oder großen Organisationen genutzt werden, sondern auch von Einzelpersonen. \cite{SWP2024}
+Durch die kontinuierliche Entwicklung von Deepfakes werden immer schneller und qualitativ hochwertigere Medien generiert. 
+Die Massenproduktion von Fälschungen, die kostengünstig mit marktverfügbaren Apps erzeugt werden, kann nicht nur gezielt von Staaten oder großen Organisationen genutzt werden, 
+sondern auch von Einzelpersonen. \cite{SWP2024}
 
-Des Weiteren können weitere KI-Modelle verwendet werden, um neben GANs auch andere Deepfakes zu erstellen, oder es können bestehende GANs weiterentwickelt werden, indem zum Beispiel durch Parameteranpassung oder höhere Rechenleistungen die Erkennbarkeit von Deepfakes eingeschränkt wird. \cite{SWP2024}
+Des Weiteren können weitere KI-Modelle verwendet werden, um neben GANs auch andere Deepfakes zu erstellen, 
+oder es können bestehende GANs weiterentwickelt werden, indem zum Beispiel durch Parameteranpassung oder höhere Rechenleistungen die Erkennbarkeit von Deepfakes eingeschränkt wird. \cite{SWP2024}
 
-Auch müssen dementsprechend Maßnahmen getroffen werden, um gegen Deepfakes vorzugehen, wie etwa die „Vergiftung“ von Trainingsdaten, sodass die KI-Modelle nicht mehr für Deepfakes verwendet werden können, oder der Ausbau von Blockchain-Technologien, die verwendet werden können, um zu dokumentieren, woher genau diese Medieninhalte stammen und wie sie verbreitet wurden. \cite{SWP2024} \cite{KAS2024}
+Auch müssen dementsprechend Maßnahmen getroffen werden, um gegen Deepfakes vorzugehen, wie etwa die „Vergiftung“ von Trainingsdaten, 
+sodass die KI-Modelle nicht mehr für Deepfakes verwendet werden können, oder der Ausbau von Blockchain-Technologien, die verwendet werden können, um zu dokumentieren, 
+woher genau diese Medieninhalte stammen und wie sie verbreitet wurden. \cite{SWP2024} \cite{KAS2024}
 
-Diese kurze Einführung zeigt, dass auch in Zukunft das "Katz-und-Maus-Spiel" weitergehen wird. Da die Entwicklung von Deepfakes unaufhörlich voranschreitet, müssen fortlaufend neue Maßnahmen ergriffen werden, um die Verbreitung von Deepfakes zu verhindern. Auch wenn solche Maßnahmen getroffen werden, werden Deepfakes neue Wege finden, um sich zu verbreiten.
+Diese kurze Einführung zeigt, dass auch in Zukunft das "Katz-und-Maus-Spiel" weitergehen wird. 
+Da die Entwicklung von Deepfakes unaufhörlich voranschreitet, müssen fortlaufend neue Maßnahmen ergriffen werden, um die Verbreitung von Deepfakes zu verhindern. 
+Auch wenn solche Maßnahmen getroffen werden, werden Deepfakes neue Wege finden, um sich zu verbreiten.
 
 \subsection{Gesellschaftliche Anpassungen}
-Die Gesellschaft muss sich der Entwicklung von Deepfakes anpassen. Das heißt, sie muss sich gegen Deepfakes sensibilisieren und Medienkompetenz aneignen, um generierte Inhalte von echten unterscheiden zu können.\cite{KIT2021}\cite{KAS2024}\cite{Fraunhofer2024}
+Die Gesellschaft muss sich der Entwicklung von Deepfakes anpassen. 
+Das heißt, sie muss sich gegen Deepfakes sensibilisieren und Medienkompetenz aneignen, 
+um generierte Inhalte von echten unterscheiden zu können.\cite{KIT2021}\cite{KAS2024}\cite{Fraunhofer2024}
 
-Zusätzlich müssen staatliche Institutionen sich der rasanten Entwicklung anpassen. Dies beinhaltet beispielsweise eine schnelle Reaktion auf die Verbreitung von Deepfakes. Auch könnten Anpassungen in Bildungsprogrammen für Schüler vorgenommen werden, um den Umgang mit Deepfakes und anderen Formen von Desinformation zu integrieren.\cite{SWP2024}\cite{Fraunhofer2024}
+Zusätzlich müssen staatliche Institutionen sich der rasanten Entwicklung anpassen. 
+Dies beinhaltet beispielsweise eine schnelle Reaktion auf die Verbreitung von Deepfakes. 
+Auch könnten Anpassungen in Bildungsprogrammen für Schüler vorgenommen werden, um den Umgang mit Deepfakes und anderen Formen von Desinformation zu integrieren.\cite{SWP2024}\cite{Fraunhofer2024}
 
-Auch die klassischen Medien spielen eine zentrale Rolle bei der Aufklärung über Deepfakes und deren potenzielle Auswirkungen. Sie sollten zudem Standards für die Überprüfung von Inhalten entwickeln, um ihre Beiträge vertrauenswürdiger zu gestalten und als Gegenwicht zu Deepfakes zu fungieren.\cite{SWP2024}\cite{Fraunhofer2024}
+Auch die klassischen Medien spielen eine zentrale Rolle bei der Aufklärung über Deepfakes und deren potenzielle Auswirkungen. 
+Sie sollten zudem Standards für die Überprüfung von Inhalten entwickeln, um ihre Beiträge vertrauenswürdiger zu gestalten und als Gegenwicht zu Deepfakes zu fungieren.\cite{SWP2024}\cite{Fraunhofer2024}
 \newpage
 
 %Fazit
 \section{Fazit}
-Durch das Voranschreiten der Deepfake-Technologie sowie der KI entsteht eine zunehmende Herausforderung – sowohl auf technischer als auch auf gesellschaftlicher Ebene. Während GANs immer realistischere synthetische Medien erzeugen, werden gleichzeitig Methoden entwickelt, um Deepfakes zu erkennen und zu identifizieren. Doch es bleibt eine schwierige Aufgabe, diese Methoden weiterzuentwickeln, da sich die Modelle kontinuierlich verbessern.
+Durch das Voranschreiten der Deepfake-Technologie sowie der KI entsteht eine zunehmende Herausforderung – sowohl auf technischer als auch auf gesellschaftlicher Ebene. 
+Während GANs immer realistischere synthetische Medien erzeugen, werden gleichzeitig Methoden entwickelt, um Deepfakes zu erkennen und zu identifizieren. 
+Doch es bleibt eine schwierige Aufgabe, diese Methoden weiterzuentwickeln, da sich die Modelle kontinuierlich verbessern.
 
-Auf technischer Ebene werden verschiedene Ansätze gegen Deepfakes verfolgt. Zum einen gibt es KI-Erkennungssysteme, die mit Deepfakes trainiert werden, um diese zuverlässig zu identifizieren. Zum anderen werden digitale Signaturen in den Metadaten hinterlegt, um nachvollziehen zu können, ob ein Inhalt echt oder gefälscht ist.
+Auf technischer Ebene werden verschiedene Ansätze gegen Deepfakes verfolgt. Zum einen gibt es KI-Erkennungssysteme, die mit Deepfakes trainiert werden, um diese zuverlässig zu identifizieren. 
+Zum anderen werden digitale Signaturen in den Metadaten hinterlegt, um nachvollziehen zu können, ob ein Inhalt echt oder gefälscht ist.
 Auch setzen Unternehmen wie YouTube und Meta auf Standards wie C2PA oder die Metadaten-Analyse, um KI-generierte Inhalte transparent zu kennzeichnen.
 
-Neben den technischen Ansätzen werden Maßnahmen in Prävention und Bildung ergriffen, wie die Stärkung der Medienkompetenz oder die Sensibilisierung für solche Inhalte, um die Auswirkungen von Deepfakes zu minimieren.
+Neben den technischen Ansätzen werden Maßnahmen in Prävention und Bildung ergriffen, 
+wie die Stärkung der Medienkompetenz oder die Sensibilisierung für solche Inhalte, um die Auswirkungen von Deepfakes zu minimieren.
 
-Zusätzlich müssen auch ethische und rechtliche Aspekte berücksichtigt werden. Nach Kants kategorischem Imperativ sollte sich jeder, der Deepfakes erstellt oder verbreitet, die Frage stellen: Welche Auswirkungen hätte es, wenn jeder Deepfakes verbreiten würde? Durch diese Perspektive soll ein verantwortungsvoller Umgang mit Deepfakes bei Erstellern, Plattformbetreibern, Konsumenten und Gesetzgebern gefördert werden.
+Zusätzlich müssen auch ethische und rechtliche Aspekte berücksichtigt werden. 
+Nach Kants kategorischem Imperativ sollte sich jeder, der Deepfakes erstellt oder verbreitet, die Frage stellen: 
+Welche Auswirkungen hätte es, wenn jeder Deepfakes verbreiten würde? 
+Durch diese Perspektive soll ein verantwortungsvoller Umgang mit Deepfakes bei Erstellern, Plattformbetreibern, Konsumenten und Gesetzgebern gefördert werden.
 
-Mit Blick auf die Zukunft bleibt abzuwarten, wie sich die Deepfake-Technologie weiterentwickelt. Zudem müssen Gegenmaßnahmen kontinuierlich weiterentwickelt werden, um langfristig effektiv gegen den Missbrauch von Deepfakes vorgehen zu können.
-\newpage
+Mit Blick auf die Zukunft bleibt abzuwarten, wie sich die Deepfake-Technologie weiterentwickelt. 
+Zudem müssen Gegenmaßnahmen kontinuierlich weiterentwickelt werden, um langfristig effektiv gegen den Missbrauch von Deepfakes vorgehen zu können.
+
 
 % Literaturverzeichnis
-\addcontentsline{toc}{section}{Literaturverzeichnis}
+\newpage
 \section*{Literaturverzeichnis}
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+
 \begin{thebibliography}{99}
 \bibitem{Basecamp2024} Basecamp Digital. (2024). KI verstehen: Update zu Kennzeichnungspflichten und zum neuen ChatGPT.
 Verfügbar unter: \url{https://www.basecamp.digital/ki-verstehen-update-zu-kennzeichnungspflichten-und-zum-neuen-chatgpt/} (zuletzt aufgerufen am 23.01.2025).
@@ -293,9 +404,8 @@ Verfügbar unter: \url{https://www.unr.edu/nevada-today/news/2023/atp-deepfakes}
 
 % Ehrenwörtliche Erklärung
 \newpage
-\addcontentsline{toc}{section}{Ehrenwörtliche Erklärung}
 \section*{\texttt{Ehrenwörtliche Erklärung}}
-Hiermit erkläre ich, dass ich die vorliegende schriftliche Ausarbeitung im Modul \textbf{Webtechnologies and Applications} selbstständig
+\addcontentsline{toc}{section}{Ehrenwörtliche Erklärung}Hiermit erkläre ich, dass ich die vorliegende schriftliche Ausarbeitung im Modul \textbf{Webtechnologies and Applications} selbstständig
 angefertigt habe. Es wurden nur die in der Arbeit ausdrücklich benannten Quellen und
 Hilfsmittel benutzt. Wörtlich oder sinngemäß übernommenes Gedankengut habe ich als
 solches kenntlich gemacht. Diese Arbeit hat in gleicher oder ähnlicher Form noch keiner
