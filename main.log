@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.2.25)  17 MAR 2025 20:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.2.25)  22 MAR 2025 04:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -651,7 +651,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.98 \newpage
               [1]
-Overfull \hbox (63.61258pt too wide) in paragraph at lines 139--140
+Overfull \hbox (63.61258pt too wide) in paragraph at lines 132--133
  [][] 
  []
 
@@ -664,17 +664,17 @@ Overfull \hbox (63.61258pt too wide) in paragraph at lines 139--140
 [4]
 
 [5]
-Overfull \hbox (16.06998pt too wide) in paragraph at lines 261--264
+Overfull \hbox (16.06998pt too wide) in paragraph at lines 255--258
 \T1/cmr/m/n/12 mehr für De-e-pfa-kes ver-wen-det wer-den kön-nen, oder der Aus-bau von Blockchain-Technologien,
  []
 
 
-Overfull \hbox (20.5076pt too wide) in paragraph at lines 265--268
+Overfull \hbox (20.5076pt too wide) in paragraph at lines 259--262
 []\T1/cmr/m/n/12 Diese kur-ze Ein-füh-rung zeigt, dass auch in Zu-kunft das "Katz-und-Maus-Spiel"weitergehen
  []
 
 
-Overfull \hbox (21.12437pt too wide) in paragraph at lines 274--277
+Overfull \hbox (21.12437pt too wide) in paragraph at lines 268--271
 \T1/cmr/m/n/12 um den Um-gang mit De-e-pfa-kes und an-de-ren For-men von Des-in-for-ma-ti-on zu integrieren.[[]][[]] 
  []
 
@@ -690,9 +690,9 @@ Overfull \hbox (21.12437pt too wide) in paragraph at lines 274--277
 
 [10]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 407.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 401.
 
-Overfull \hbox (24.0pt too wide) in paragraph at lines 415--419
+Overfull \hbox (24.0pt too wide) in paragraph at lines 409--413
 [] 
  []
 
@@ -705,17 +705,17 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 24603 strings out of 473522
- 444648 string characters out of 5724673
- 864187 words of memory out of 5000000
- 47365 multiletter control sequences out of 15000+600000
- 573569 words of font info for 76 fonts, out of 8000000 for 9000
+ 24601 strings out of 473522
+ 444626 string characters out of 5724673
+ 864186 words of memory out of 5000000
+ 47364 multiletter control sequences out of 15000+600000
+ 572885 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,8n,91p,588b,810s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1728.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk>
-Output written on main.pdf (15 pages, 270367 bytes).
+ <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1728.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Kursat\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk>
+Output written on main.pdf (15 pages, 252423 bytes).
 PDF statistics:
- 756 PDF objects out of 1000 (max. 8388607)
+ 706 PDF objects out of 1000 (max. 8388607)
  67 named destinations out of 1000 (max. 500000)
  170 words of extra memory for PDF output out of 10000 (max. 10000000)
 

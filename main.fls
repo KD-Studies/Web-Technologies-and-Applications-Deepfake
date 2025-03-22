@@ -328,7 +328,6 @@ INPUT .\main.lof
 INPUT main.lof
 OUTPUT main.lof
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx1440.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecti1200.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ectt1200.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ectt1728.tfm
 INPUT main.aux
@@ -336,8 +335,6 @@ INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1728.pk
 INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
-INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
-INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
 INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
 INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
 INPUT C:\Users\Kursat\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk

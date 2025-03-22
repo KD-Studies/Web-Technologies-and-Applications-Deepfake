@@ -104,28 +104,22 @@ Bevor auf die Gegenmaßnahmen eingegangen wird, ist es wichtig zu verstehen, wie
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[node distance=1.5cm, >=latex]
-        % Styles
         \tikzstyle{block} = [rectangle, draw, minimum width=2.5cm, minimum height=1.5cm]
         \tikzstyle{gen} = [block, fill=blue!100]
         \tikzstyle{disc} = [block, fill=red!100]
         
-        % Generator Block
         \node (rannoise) [block, minimum width=2cm, minimum height=1cm] {Random noise};
         \node (gen) [gen, right=of rannoise] {Generator};
         \node (fake) [block, right=of gen] {Fake image};
         
-        % Training set
         \node (trainset) [block, above=of gen, minimum width=2cm, minimum height=2cm] {Training set};
         
-        % Real Images
         \node (real) [block, right=of trainset, minimum width=2cm, minimum height=2cm] {Real Images};
         
-        % Discriminator Block
         \node (discri) [disc, right=of fake] {Discriminator};
         \node (realtext) [right=of discri, yshift=0.5cm, text=blue] {\textbf{Real}};
         \node (faketext) [right=of discri, yshift=-0.5cm, text=gray] {Fake};
         
-        % Arrows
         \draw[->] (rannoise) -- (gen);
         \draw[->] (gen) -- (fake);
         \draw[->] (trainset) -- (real);
@@ -134,7 +128,6 @@ Bevor auf die Gegenmaßnahmen eingegangen wird, ist es wichtig zu verstehen, wie
         \draw[->] (discri) -- (realtext);
         \draw[->] (discri) -- (faketext);
 
-        % Border around everything
         \node[draw, thick, dashed, inner sep=5pt, fit=(rannoise) (trainset) (discri) (realtext) (faketext)] {};
     \end{tikzpicture}
     \caption{Generative Adversarial Network (GAN), angelehnt an \cite{BVDW2024}}
@@ -199,9 +192,9 @@ um in den folgenden Kapiteln festzulegen, welches Handeln von den jeweiligen Bet
 
 \subsection{Definition von Moral}
 Moral lässt sich auf unterschiedliche Weise definieren, für die Ausarbeitung wird auf die Definition von Kant eingegangen. 
-Immanuel Kant war ein bedeutender Philosoph, der den kategorischen Imperativ formulierte: \textit{„Handle nur nach derjenigen Maxime, durch die du zugleich wollen kannst, dass sie ein allgemeines Gesetz werde.“} \cite{KantMetaphysik}.
+Immanuel Kant war ein bedeutender Philosoph, der den kategorischen Imperativ formulierte: „Handle nur nach derjenigen Maxime, durch die du zugleich wollen kannst, dass sie ein allgemeines Gesetz werde.“ \cite{KantMetaphysik}.
 
-Dieses Zitat hebt hervor, wo die Grenzen der Moral gesetzt werden. 
+Dieses Zitat hebt hervor, wo die Grenzen der Moral gesetzt werden sollten. 
 Jede Person soll ihr Handeln reflektieren und dementsprechend agieren. Ein Negativbeispiel hierfür wäre ein falsches Versprechen. 
 Eine Person, die Geld leihen möchte, aber weiß, dass sie dieses Geld nicht zurückzahlen kann, muss sich laut Kants Prinzip die Frage stellen, 
 ob die Maxime dieser Person ein allgemeines Gesetz werden könnte. Die Folgen wären, dass, wenn jeder dieses Vertrauen missbrauchen würde, niemand jemals wieder jemandem vertrauen würde. 
@@ -213,7 +206,7 @@ Diese Definition von Moral wird für die weitere Analyse in Betracht gezogen, da
 Deepfakes bringen große ethische und rechtliche Herausforderungen mit sich. Wer ist eigentlich dafür verantwortlich, wenn sie erstellt, verbreitet oder für schädliche Zwecke genutzt werden?
 
 Nach Kants kategorischem Imperativ sollte sich jeder, der Deepfakes produziert oder teilt, 
-die Frage stellen: \textit{„Was wäre, wenn das jeder tun würde?“ Würde es in Ordnung sein, wenn manipulierte Inhalte alltäglich wären und möglicherweise Schaden anrichten?} 
+die Frage stellen: „Was wäre, wenn das jeder tun würde?“ Würde es in Ordnung sein, wenn manipulierte Inhalte alltäglich wären und möglicherweise Schaden anrichten? 
 Wahrscheinlich nicht, denn das würde das Vertrauen in digitale Medien zerstören und ernsthafte gesellschaftliche Folgen haben. \cite{KantMetaphysik}
 
 Daher gibt es verschiedene Akteure, die für den Umgang mit Deepfakes verantwortlich sind.
@@ -223,12 +216,13 @@ In der folgenden Übersicht wird nur der ethische Imperativ von Kant betrachtet 
 Ersteller von Deepfakes:
 Diejenigen, die Deepfakes erstellen, müssen sich bestimmter moralischer Aspekte bewusst sein, wie genau der Deepfake verwendet werden soll. 
 Das heißt, wenn ein Deepfake verwendet wird, um Täuschung und Manipulation zu bezwecken, 
-muss dieser sich aus der Sicht Kants die folgende Frage stellen: \textit{„Welche Auswirkung hätte es, wenn jeder Deepfakes verbreitet, mit dem Zweck der Täuschung und Manipulation?“} 
-Durch diese Fragestellung wird deutlich, dass Vertrauen in Informationen und Medien verloren ginge, wenn dies gezielt von jedem verbreitet würde. Auch wenn ein Deepfake für Unterhaltung erstellt wird, muss beachtet werden, ob dieser "missbraucht" werden könnte, was wiederum die Fragestellung Kants aufwirft: \textit{„Welche Folgen hat ein Deepfake, wenn dieser missbraucht wird?“}\cite{IJS2025}\cite{KantMetaphysik}
+muss dieser sich aus der Sicht Kants die folgende Frage stellen: „Welche Auswirkung hätte es, wenn jeder Deepfakes verbreitet, mit dem Zweck der Täuschung und Manipulation?“ 
+Durch diese Fragestellung wird deutlich, dass Vertrauen in Informationen und Medien verloren ginge, wenn dies gezielt von jedem verbreitet würde. Auch wenn ein Deepfake für Unterhaltung erstellt wird, muss beachtet werden, 
+ob dieser "missbraucht" werden könnte, was wiederum die Fragestellung Kants aufwirft: „Welche Folgen hat ein Deepfake, wenn dieser missbraucht wird?“\cite{IJS2025}\cite{KantMetaphysik}
 
 Deepfakes Plattformanbieter:
 Auch Plattformanbieter müssen darauf achten, wie genau ihre Plattformen verwendet werden sollen. 
-Im Zusammenhang mit Kants Theorie sollten sich die Betreiber die Frage stellen: \textit{„Wie können/will man, dass die generierten Deepfakes verwendet werden?“} 
+Im Zusammenhang mit Kants Theorie sollten sich die Betreiber die Frage stellen: „Wie können/will man, dass die generierten Deepfakes verwendet werden?“
 Im Zuge dieser Fragestellung werden auch mögliche Maßnahmen berücksichtigt, die diese moralische Frage vielseitig ansprechen, 
 wie zum Beispiel Transparenz oder eine Kennzeichnungspflicht für Deepfakes. Auch die Implementierung von Sicherheitsmaßnahmen für erstellte Deepfakes, etwa die Frage, 
 ob ein Deepfake als schädlich eingestuft wird oder nicht, sollte beachtet werden. 
