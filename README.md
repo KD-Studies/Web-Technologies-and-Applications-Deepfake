@@ -1,4 +1,5 @@
 # Web-Technologies-and-Applications-Deepfake
+
 ## Überblick
 
 Dieses Repository enthält eine Ausarbeitung zum Thema **Deepfake-Technologie** im Kontext von Webtechnologien und Anwendungen (WTA). Der Schwerpunkt liegt auf den technischen Grundlagen, moralischen Herausforderungen sowie möglichen Gegenmaßnahmen und Zukunftsperspektiven im Umgang mit Deepfakes.
@@ -32,11 +33,15 @@ Die Ausarbeitung ist wie folgt strukturiert:
 
 ## Verwendung
 
-Dieses Repository dient zur Bereitstellung der theoretischen Grundlage und ist für Studierende, Lehrende und alle Interessierten frei zugänglich.
+Jegliche Nutzung, Vervielfältigung, Modifikation oder Verbreitung der Inhalte dieses Repositories ist ausschließlich nach vorherigem, schriftlichem Einverständnis von **Kürsat Darcan** erlaubt.
 
 ## Lizenz
 
-Dieses Projekt steht unter der **MIT License**. Weitere Informationen finden Sie in der Datei `LICENSE`.
+Dieses Projekt steht unter einer benutzerdefinierten Lizenz. Details hierzu finden Sie in der [LICENSE](LICENSE)-Datei.
+
+**Kurzfassung:**  
+© 2025 Kürsat Darcan  
+All rights reserved. Kein Teil dieses Repositories (einschließlich Code, Assets und Dokumentation) darf ohne ausdrückliche schriftliche Genehmigung von Kürsat Darcan kopiert, verändert, verbreitet oder in irgendeiner Form verwendet werden.
 
 ## Autor
 
